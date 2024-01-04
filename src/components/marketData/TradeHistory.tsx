@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import * as Icons from "../../app/svg/Icons";
 import { abbreviateAddress } from "@/utils/formatting";
 import { OpenBookTradeEvent } from "@/utils/types";
+import { useMarketStore } from "@/stores/arcanaStore";
 
 // Helper function to format timestamp
 const formatTimestamp = (timestamp: number): string => {
@@ -30,6 +31,7 @@ const TradeHistory = ({
         setTradeHistory([]); // Set to empty array in case of error
       });
   }, [marketId]);
+  // const { tradeHistory } = useMarketStore((state) => state);
 
   const renderTradeRow = (item: OpenBookTradeEvent | null, index: number) => {
     // Determine row background based on row index
