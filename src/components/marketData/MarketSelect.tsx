@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMarketStore } from "../../stores/arcanaStore";
+import TradeHistory from "./TradeHistory";
 
 const MarketSelect = () => {
   const { updateMarketId, setMarketData, setTradeHistory, setOrderBook } =
@@ -58,9 +59,13 @@ const MarketSelect = () => {
     const populateMarketDetails = async () => {
       const result = await fetchMarketData(marketId);
       const tradeHistory = await fetchTradeHistory(marketId);
-      const orderBook = await fetchOrderBook(marketId);
+      let orderBook = await fetchOrderBook(marketId);
+
+      orderBook.market?.bidOrders.sort((a: any, b: any) => b.price - a.price);
+      orderBook.market?.askOrders.sort((a: any, b: any) => a.price - b.price);
+
       setOrderBook(orderBook);
-      setTradeHistory(tradeHistory);
+      setTradeHistory(tradeHistory.trades || []);
       setMarketData(result);
     };
     populateMarketDetails();
@@ -69,10 +74,10 @@ const MarketSelect = () => {
   return (
     <select onChange={handleChange} value={marketId}>
       {/* Options for market IDs */}
-      <option value="C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q">
+      <option value='C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q'>
         Market 1
       </option>
-      <option value="G6veo6MpQXc9vbM6p3wcRYyBee2na1uuD9y6CT1ZRgjw">
+      <option value='G6veo6MpQXc9vbM6p3wcRYyBee2na1uuD9y6CT1ZRgjw'>
         Market 2
       </option>
     </select>

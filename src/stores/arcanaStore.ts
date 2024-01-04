@@ -5,18 +5,18 @@ interface MarketState {
   marketId: string;
   marketData: FullMarketData | null;
   tradeHistory: any | null;
-  orderBook: OrderBookData | null;
+  orderBookData: OrderBookData | null;
   updateMarketId: (id: string) => void;
   setMarketData: (data: any) => void;
   setTradeHistory: (data: any) => void;
   setOrderBook: (data: any) => void;
 }
 
-export const useMarketStore = create<MarketState>((set, get) => ({
+export const useMarketStore = create<MarketState>((set) => ({
   marketId: "C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q", // Set the default market ID here
   marketData: null,
-  tradeHistory: null,
-  orderBook: null,
+  tradeHistory: [],
+  orderBookData: null,
 
   updateMarketId: (id: string) => {
     set({ marketId: id });
@@ -31,7 +31,7 @@ export const useMarketStore = create<MarketState>((set, get) => ({
   },
 
   setOrderBook: (data: any) => {
-    set({ orderBook: data });
+    set({ orderBookData: data });
   },
 }));
 

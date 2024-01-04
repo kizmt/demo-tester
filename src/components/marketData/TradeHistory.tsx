@@ -18,20 +18,20 @@ console.log(date);
 const TradeHistory = ({
   marketId = "C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q",
 }) => {
-  const [tradeHistory, setTradeHistory] = useState<OpenBookTradeEvent[]>([]);
+  // const [tradeHistory, setTradeHistory] = useState<OpenBookTradeEvent[]>([]);
 
-  useEffect(() => {
-    fetch(
-      `https://alpha.arcana.markets/api/openbookv2/markets/${marketId}/trades`
-    )
-      .then((response) => response.json())
-      .then((data) => setTradeHistory(data.trades || [])) // Ensure it's always an array
-      .catch((error) => {
-        console.error("Error fetching trade history:", error);
-        setTradeHistory([]); // Set to empty array in case of error
-      });
-  }, [marketId]);
-  // const { tradeHistory } = useMarketStore((state) => state);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://alpha.arcana.markets/api/openbookv2/markets/${marketId}/trades`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => setTradeHistory(data.trades || [])) // Ensure it's always an array
+  //     .catch((error) => {
+  //       console.error("Error fetching trade history:", error);
+  //       setTradeHistory([]); // Set to empty array in case of error
+  //     });
+  // }, [marketId]);
+  const { tradeHistory } = useMarketStore((state) => state);
 
   const renderTradeRow = (item: OpenBookTradeEvent | null, index: number) => {
     // Determine row background based on row index
@@ -51,7 +51,7 @@ const TradeHistory = ({
       >
         {item ? (
           <>
-            <div className="w-full flex justify-start items-center">
+            <div className='w-full flex justify-start items-center'>
               <button
                 className={`text-[12px] capitalize font-medium text-foreground-100 dark:opacity-80 opacity-100 py-[2px] px-[12px] ${
                   item.takerSide === 0 ? "bg-green" : "bg-red"
@@ -60,42 +60,42 @@ const TradeHistory = ({
                 {item.takerSide === 0 ? "buy" : "sell"}
               </button>
             </div>
-            <p className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left">
+            <p className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left'>
               {formatTimestamp(item.timeStamp)}
             </p>
-            <p className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left">
+            <p className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left'>
               {item.priceDouble}
             </p>
-            <p className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left">
+            <p className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left'>
               {item.quantityDouble}
             </p>
             {/* Taker cell with better icon spacing */}
-            <div className="w-full flex justify-start items-center">
-              <p className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium mr-2">
+            <div className='w-full flex justify-start items-center'>
+              <p className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium mr-2'>
                 {abbreviateAddress(item.takerOwner)}
               </p>
               <a
                 href={`https://solscan.io/account/${item.takerOwner}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                target='_blank'
+                rel='noopener noreferrer'
               >
-                <button className="p-1">
+                <button className='p-1'>
                   <Icons.share />
                 </button>
               </a>
             </div>
 
             {/* Maker cell with better icon spacing */}
-            <div className="w-full flex justify-end items-center">
-              <p className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium mr-2">
+            <div className='w-full flex justify-end items-center'>
+              <p className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium mr-2'>
                 {abbreviateAddress(item.makerOwner)}
               </p>
               <a
                 href={`https://solscan.io/account/${item.makerOwner}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                target='_blank'
+                rel='noopener noreferrer'
               >
-                <button className="p-1">
+                <button className='p-1'>
                   <Icons.share />
                 </button>
               </a>
@@ -104,12 +104,12 @@ const TradeHistory = ({
         ) : (
           <React.Fragment>
             {/* Render empty cells for an empty row */}
-            <div className="w-full flex justify-start items-center"></div>
-            <div className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left"></div>
-            <div className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left"></div>
-            <div className="text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left"></div>
-            <div className="w-full flex text-foreground-100 dark:opacity-100 opacity-80 gap-1 justify-start items-center"></div>
-            <div className="w-full flex text-foreground-100 dark:opacity-100 opacity-80 gap-1 justify-end items-center"></div>
+            <div className='w-full flex justify-start items-center'></div>
+            <div className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left'></div>
+            <div className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left'></div>
+            <div className='text-[14px] text-foreground-100 dark:opacity-100 opacity-80 font-medium w-full text-left'></div>
+            <div className='w-full flex text-foreground-100 dark:opacity-100 opacity-80 gap-1 justify-start items-center'></div>
+            <div className='w-full flex text-foreground-100 dark:opacity-100 opacity-80 gap-1 justify-end items-center'></div>
           </React.Fragment>
         )}
       </div>
@@ -126,15 +126,15 @@ const TradeHistory = ({
   ];
 
   return (
-    <div className="w-full flex flex-col gap-4 items-start">
-      <div className="flex justify-center items-center gap-3 sm:px-8">
-        <p className="text-[20px] text-foreground-900 dark:text-foreground-100 dark:opacity-80 opacity-100 font-medium">
+    <div className='w-full flex flex-col gap-4 items-start'>
+      <div className='flex justify-center items-center gap-3 sm:px-8'>
+        <p className='text-[20px] text-foreground-900 dark:text-foreground-100 dark:opacity-80 opacity-100 font-medium'>
           Trade history {tradeHistory.length}
         </p>
-        <p className="text-green text-[12px] font-medium">• Live</p>
+        <p className='text-green text-[12px] font-medium'>• Live</p>
       </div>
-      <div className="w-full flex flex-col overflow-auto hideScrollBar bg-background-900 dark:bg-[#09303c] border-[1px] borderColor rounded-[16px]">
-        <div className="w-full min-w-[980px] h-[40px] grid grid-cols-[1fr,1.5fr,1.5fr,1.5fr,1.5fr,1.5fr] px-4 sm:px-8 items-center">
+      <div className='w-full flex flex-col overflow-auto hideScrollBar bg-background-900 dark:bg-[#09303c] border-[1px] borderColor rounded-[16px]'>
+        <div className='w-full min-w-[980px] h-[40px] grid grid-cols-[1fr,1.5fr,1.5fr,1.5fr,1.5fr,1.5fr] px-4 sm:px-8 items-center'>
           {historyTableHeader.map((item, index) => (
             <p
               key={index}
@@ -146,8 +146,10 @@ const TradeHistory = ({
             </p>
           ))}
         </div>
-        <div className="w-full min-w-[980px] max-h-[200px] sm:max-h-[250px] overflow-auto hideScrollBar">
-          {tradeHistory.map((item, index) => renderTradeRow(item, index))}
+        <div className='w-full min-w-[980px] max-h-[200px] sm:max-h-[250px] overflow-auto hideScrollBar'>
+          {tradeHistory.map((item: any, index: any) =>
+            renderTradeRow(item, index)
+          )}
           {Array.from(
             { length: Math.max(0, 6 - tradeHistory.length) },
             (_, index) => renderTradeRow(null, tradeHistory.length + index)
