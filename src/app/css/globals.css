@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --down: 190, 106, 106;
+  --down-dark: 182, 88, 88;
+  --down-muted: 158, 112, 112;
+  --up: 96, 191, 79;
+  --up-dark: 82, 180, 65;
+  --up-muted: 116, 131, 114;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* slider card css ============>  */
+.cardShadowBor {
+  box-shadow: 0px 32px 40px -2px rgba(0, 0, 0, 0.08),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--foreground-night-400, rgba(255, 255, 255, 0.13));
+}
+.cardShadow {
+  background: var(--background-night-900-high-emphasis, #012a36);
+}
+.borderColor {
+  border-color: var(--foreground-night-400, rgba(255, 255, 255, 0.13));
+}
+.timeLine {
+  background: var(--foreground-night-300, rgba(255, 255, 255, 0.08));
+}
+.radius {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+/* slider card css ends here ============>  */
+
+/* buy and sell css =============>  */
+
+.halfBg {
+  background: var(--Danger-500, rgba(249, 86, 79, 0.19));
+}
+
+/* buy and sell css ends here ============>  */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hideScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
+/* order book styles =================>  */
+
+.orderBookSearchBg {
+  border: 1px solid var(--foreground-night-400, rgba(255, 255, 255, 0.13));
+  background: var(--foreground-night-100, rgba(255, 255, 255, 0.03));
+}
+
+.recharts-cartesian-grid-horizontal :last-child {
+  display: none;
+}
+
+/* orderbook flash */
+
+@keyframes green-flash {
+  from {
+    background-color: var(--up-muted);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@-webkit-keyframes green-flash {
+  from {
+    background-color: var(--up-muted);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-moz-keyframes green-flash {
+  from {
+    background-color: var(--up-muted);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes red-flash {
+  from {
+    background-color: var(--down-muted);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@-webkit-keyframes red-flash {
+  from {
+    background-color: var(--down-muted);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-moz-keyframes red-flash {
+  from {
+    background-color: var(--down-muted);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+.green-flash {
+  -moz-animation: green-flash 0.5s ease 0s 1 alternate;
+  -webkit-animation: green-flash 0.5s ease 0s 1 alternate;
+  animation: green-flash 0.5s ease 0s 1 alternate;
+}
+
+.red-flash {
+  -moz-animation: red-flash 0.5s ease 0s 1 alternate;
+  -webkit-animation: red-flash 0.5s ease 0s 1 alternate;
+  animation: red-flash 0.5s ease 0s 1 alternate;
+}
+
+/* order book styles ends here ===============>  */
+
+/* drawer styles ===========>  */
+.drawer {
+  width: 70% !important;
+  background-color: #012732 !important;
+}
+
+@media screen and (max-width: 500px) {
+  .drawer {
+    width: 100% !important;
+    background-color: #012732 !important;
+  }
+}
+
+tspan {
+  font-size: 14px !important;
+  fill: white !important;
+  opacity: 40%;
+}
+
+@keyframes copiedAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.animate-copied {
+  animation: copiedAnimation 0.5s ease;
+}
+
+.tradingview-widget-container iframe {
+  border: none !important;
+}
