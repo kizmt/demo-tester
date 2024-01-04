@@ -1,0 +1,99 @@
+.klinecharts-pro-watermark {
+  display: none !important;
+}
+.tools {
+  display: none !important;
+}
+.klinecharts-pro-period-bar {
+  border-bottom: none !important;
+}
+
+.klinecharts-pro-content {
+  margin-right: 0px !important;
+}
+.klinecharts-pro-drawing-bar {
+  border-right: none !important;
+}
+.menu-container {
+  border-right: none !important;
+}
+.symbol {
+  border-right: none !important;
+}
+.split-line {
+  display: none !important;
+}
+.klinecharts-pro-period-bar .item.selected {
+  color: white !important;
+  background-color: #012a36 !important;
+  border: 2px solid #012a36 !important;
+  border-radius: 8px !important;
+}
+.menu-container svg {
+  fill: white !important;
+  opacity: 0.8;
+}
+.period {
+  color: #676767 !important;
+  background-color: #012a36 !important;
+  border-radius: 8px !important;
+}
+.symbol span {
+  color: #012a36 !important;
+}
+.klinecharts-pro-widget > div > div:nth-child(2) {
+  display: none !important;
+}
+.klinecharts-pro-content {
+  font-family: 'Inter', 'sans-serif';
+}
+.klinecharts-pro-drawing-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.klinecharts-pro-drawing-bar {
+  overflow: scroll !important;
+}
+
+.klinecharts-pro-price-unit {
+  display: none !important;
+}
+
+@media screen and (max-width: 500px) {
+  .icon-overlay {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .menu-container {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .klinecharts-pro-drawing-bar .item {
+    margin-top: 4px !important;
+    justify-content: flex-start !important;
+  }
+  .klinecharts-pro-period-bar {
+    font-size: 10px !important;
+  }
+  .klinecharts-pro-period-bar .item.selected {
+    font-size: 10px !important;
+  }
+  .symbol {
+    font-size: 14px !important;
+  }
+  .klinecharts-pro-price-unit {
+    display: none !important;
+  }
+  .klinecharts-pro-period-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+  .klinecharts-pro-period-bar {
+    overflow: scroll !important;
+  }
+  .klinecharts-pro-drawing-bar {
+    width: 30px !important;
+  }
+  .klinecharts-pro-widget {
+    width: calc(100% - 30px) !important;
+  }
+}
