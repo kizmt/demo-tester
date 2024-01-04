@@ -6,14 +6,15 @@ import Image from "next/image";
 import * as Icons from "../../app/svg/Icons";
 import { CoinLogosTyped } from "@/utils/types";
 import { useMarketStore } from "@/stores/arcanaStore";
+import { MarketData } from "@/utils/types";
 
 const AdditionalDetails = () => {
-  const { marketData } = useMarketStore();
+  const { marketData }: MarketData | any = useMarketStore();
 
   // Split the market name to get base and quote tokens
   // This regex will split the string on either a slash or a hyphen
-  const [baseToken, quoteToken] = marketData?.name
-    ? marketData.name.split(/[-\/]/)
+  const [baseToken, quoteToken] = marketData?.market?.name
+    ? marketData.market.name.split(/[-\/]/)
     : ["", ""];
 
   // Get the logos for base and quote tokens
@@ -21,13 +22,13 @@ const AdditionalDetails = () => {
   const quoteTokenLogo = CoinLogosTyped[quoteToken] || "/tokens/WUSDC.png";
 
   const renderDetails = () => {
-    if (!marketData) return null;
+    if (!marketData?.market) return null;
 
     const details = [
-      { name: "Base Decimals", value: marketData.baseDecimals },
-      { name: "Quote Decimals", value: marketData.quoteDecimals },
-      { name: "Quote Lot Size", value: marketData.quoteLotSize },
-      { name: "Base Lot Size", value: marketData.baseLotSize },
+      { name: "Base Decimals", value: marketData.market.baseDecimals },
+      { name: "Quote Decimals", value: marketData.market.quoteDecimals },
+      { name: "Quote Lot Size", value: marketData.market.quoteLotSize },
+      { name: "Base Lot Size", value: marketData.market.baseLotSize },
     ];
 
     return details.map((detail, index) => (
@@ -73,8 +74,8 @@ const AdditionalDetails = () => {
               <p className='text-foreground-100 dark:opacity-100 opacity-80 dark:text-white text-[18px] sm:text-[24px] font-semibold'>
                 {/* Dynamic value from API */}
                 {(
-                  (marketData?.baseDepositTotal ?? 0) /
-                  Math.pow(10, marketData?.baseDecimals ?? 0)
+                  (marketData?.market?.baseDepositTotal ?? 0) /
+                  Math.pow(10, marketData?.market?.baseDecimals ?? 0)
                 ).toLocaleString()}
               </p>
             </div>
@@ -95,8 +96,8 @@ const AdditionalDetails = () => {
               <p className='text-foreground-100 dark:opacity-100 opacity-80 dark:text-white text-[18px] sm:text-[24px] font-semibold'>
                 {/* Dynamic value from API */}
                 {(
-                  (marketData?.quoteDepositTotal ?? 0) /
-                  Math.pow(10, marketData?.quoteDecimals ?? 0)
+                  (marketData?.market?.quoteDepositTotal ?? 0) /
+                  Math.pow(10, marketData?.market?.quoteDecimals ?? 0)
                 ).toLocaleString()}
               </p>
             </div>
