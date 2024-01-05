@@ -1,30 +1,27 @@
-"use client";
+'use client'
 
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import ComponentWrapper from "../components/ComponentWrapper";
+import ComponentWrapper from '../components/ComponentWrapper';
 
-import CarouselSlider from "../components/marketData/CarouselSlider";
-import TradingChart from "../components/marketData/TradingChart";
-import BuyAndSell from "../components/marketData/BuyAndSell";
-import OrderBook from "../components/marketData/OrderBook";
-import MarketVolume from "../components/marketData/MarketVolume";
-import TradeHistory from "../components/marketData/TradeHistory";
-import MarketDepth from "../components/marketData/MarketDepth";
-import MarketInformation from "../components/marketData/MarketInformation";
-import AdditionalDetails from "../components/marketData/AdditionalDetails";
-import MarketSelect from "@/components/marketData/MarketSelect";
-
-import { useMarketStore } from "@/stores/arcanaStore";
+import CarouselSlider from '../components/marketData/CarouselSlider';
+import TradingChart from '../components/marketData/TradingChart';
+import BuyAndSell from '../components/marketData/BuyAndSell';
+import OrderBook from '../components/marketData/OrderBook';
+import MarketVolume from '../components/marketData/MarketVolume';
+import TradeHistory from '../components/marketData/TradeHistory';
+import MarketDepth from '../components/marketData/MarketDepth';
+import MarketInformation from '../components/marketData/MarketInformation';
+import AdditionalDetails from '../components/marketData/AdditionalDetails';
+import MarketSelect from '@/components/marketData/MarketSelect';
 
 export default function Home() {
-  const { marketId } = useMarketStore();
 
   return (
     <main className='w-full'>
       <CarouselSlider />
       <ComponentWrapper>
-        <MarketSelect />
+      <MarketSelect />
         <div className='w-full flex flex-col'>
           {/* trading chart + Buy and Sell portion ========>  */}
           <div className='w-full grid grid-cols-1 lg:grid-cols-[1.9fr,1fr] lg:gap-0 gap-8 justify-center items-start py-2 sm:py-6'>
@@ -51,8 +48,8 @@ export default function Home() {
           </div>
         </div>
       </ComponentWrapper>
-      <div className='w-full bg-[#e0e0e0] dark:bg-[#01171E] py-6 sm:py-10'>
-        <ComponentWrapper>
+      <div className='w-full bg-[#e0e0e0] dark:bg-[#01171E] py-6 sm:py-10'>        
+      <ComponentWrapper>
           {/* trade history ===========>  */}
           <TradeHistory />
           {/* market infomation + additional detail =======> */}

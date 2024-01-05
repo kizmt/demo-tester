@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import * as Icons from "../../app/svg/Icons";
 import { CoinLogosTyped } from "@/utils/types";
 import { useMarketStore } from "@/stores/arcanaStore";
-import { MarketData } from "@/utils/types";
+import { FullMarketData } from "@/utils/types";
 
 const AdditionalDetails = () => {
-  const { marketData }: MarketData | any = useMarketStore();
+  const { marketData }: FullMarketData | any = useMarketStore();
 
   // Split the market name to get base and quote tokens
   // This regex will split the string on either a slash or a hyphen

@@ -15,22 +15,7 @@ const timestamp = 1703879491;
 const date = dayjs.unix(timestamp).format("YYYY-MM-DD HH:mm:ss");
 console.log(date);
 
-const TradeHistory = ({
-  marketId = "C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q",
-}) => {
-  // const [tradeHistory, setTradeHistory] = useState<OpenBookTradeEvent[]>([]);
-
-  // useEffect(() => {
-  //   fetch(
-  //     `https://alpha.arcana.markets/api/openbookv2/markets/${marketId}/trades`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => setTradeHistory(data.trades || [])) // Ensure it's always an array
-  //     .catch((error) => {
-  //       console.error("Error fetching trade history:", error);
-  //       setTradeHistory([]); // Set to empty array in case of error
-  //     });
-  // }, [marketId]);
+const TradeHistory = () => {
   const { tradeHistory } = useMarketStore((state) => state);
 
   const renderTradeRow = (item: OpenBookTradeEvent | null, index: number) => {

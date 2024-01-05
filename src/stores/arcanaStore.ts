@@ -1,4 +1,4 @@
-import { FullMarketData, MarketData, OrderBookData } from "@/utils/types";
+import { FullMarketData, OrderBookData } from "@/utils/types";
 import { create } from "zustand";
 
 interface MarketState {
@@ -10,10 +10,10 @@ interface MarketState {
   setMarketData: (data: any) => void;
   setTradeHistory: (data: any) => void;
   setOrderBook: (data: any) => void;
-}
+};
 
 export const useMarketStore = create<MarketState>((set) => ({
-  marketId: "C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q", // Set the default market ID here
+  marketId: "C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q",
   marketData: null,
   tradeHistory: [],
   orderBookData: null,
@@ -34,7 +34,6 @@ export const useMarketStore = create<MarketState>((set) => ({
     set({ orderBookData: data });
   },
 }));
-
 // useMarketStore.subscribe((marketData) =>
 //   console.log("Market data updated:", marketData.marketData)
 // );

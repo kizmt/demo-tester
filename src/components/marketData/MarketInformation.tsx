@@ -5,24 +5,12 @@ import Image from "next/image";
 import * as Icons from "../../app/svg/Icons";
 import Link from "next/link";
 import { getToken } from "@/apis/coinGecko";
-import { CoinLogosTyped, MarketData } from "@/utils/types";
+import { CoinLogosTyped, FullMarketData } from "@/utils/types";
 import { useMarketStore } from "@/stores/arcanaStore";
 
-const MarketInformation = ({
-  marketId = "C3YPL3kYCSYKsmHcHrPWx1632GUXGqi2yMXJbfeCc57q",
-}) => {
-  // const [marketData, setMarketDetails] = useState<MarketData | any>(null);
+const MarketInformation = () => {
   const [priceChange, setPriceChange] = useState<number | null>(null);
-  const marketData: MarketData | any = useMarketStore(
-    (state) => state.marketData
-  );
-
-  // useEffect(() => {
-  //   fetch(`https://alpha.arcana.markets/api/openbookv2/markets/${marketId}`)
-  //     .then((response) => response.json())
-  //     .then((data) => setMarketDetails(data))
-  //     .catch((error) => console.error("Error fetching market details:", error));
-  // }, [marketId]);
+  const { marketData }: FullMarketData | any = useMarketStore();
 
   useEffect(() => {
     if (marketData?.market.name === "SOL-USDC") {
