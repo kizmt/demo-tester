@@ -63,7 +63,10 @@ const MarketSelect = () => {
       .then((response) => response.json())
       .then((data) => {
         setMarkets(data);
-        setSelected(data[0]); // Initialize with the first market
+
+        setSelected(
+          data.find((market: any) => market.market.marketId === marketId)
+        ); // Initialize with the first market
       })
       .catch((error) => console.error("Error fetching markets:", error));
   }, []);
